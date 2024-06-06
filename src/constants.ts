@@ -1,6 +1,6 @@
 import CasesEnum from "./types/cases";
 
-export const UNITS_OPTIONS: CasesEnum[] = [
+export const CASES_OPTIONS: CasesEnum[] = [
   "UpperCase",
   "LowerCase",
   "SentenceCase",
