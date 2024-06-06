@@ -46,3 +46,4 @@
     -Convert numbers to words (e.g., 10 -> ten)
     -Extract email addresses, phone numbers, URLs from text
     -Convert text to different number formats (e.g., currency, percentages)
+    -Sort lines alphabetically/numerically
