@@ -1,33 +1,21 @@
 import CasesEnum from "../types/cases";
 import { handleError } from "../lib/showError";
-import { checkUnit, checkValue, extractUnit } from "./stringHelpers";
 
-type ValidatedOptionType = {
-  currentValue: string | undefined;
-  currentCase: CasesEnum | undefined;
-  expectedCase: CasesEnum | undefined;
-};
+const checkCase = (c: CasesEnum | "All") => (c === "All" ? false : true);
 
-const validateOptions = (currentValue: string, expectedCase: string) => {
-  let validatedOptions: ValidatedOptionType = {
-    currentValue: undefined,
-    currentCase: undefined,
-    expectedCase: undefined,
-  };
-  validatedOptions.expectedCase = checkUnit(expectedCase); //"rem"
-  validatedOptions.currentValue = checkValue(currentValue); //"16px"
-  if (!validatedOptions.expectedCase) {
+const validateOptions = (
+  currentValue: CasesEnum | "All",
+  expectedCase: CasesEnum | "All"
+) => {
+  if (checkCase(expectedCase)) {
     handleError("Invalid Expected Case");
+    return false;
   }
-  if (!validatedOptions.currentValue) {
-    handleError("Invalid Current Value");
-  } else {
-    validatedOptions.currentCase = checkUnit(extractUnit(currentValue)); //"px"
-    if (!validatedOptions.currentCase) {
-      handleError("Invalid Current Case");
-    }
+  if (checkCase(currentValue)) {
+    handleError("Invalid Current Case");
+    return false;
   }
-  return validatedOptions;
+  return true;
 };
 
 export { validateOptions };
