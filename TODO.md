@@ -6,18 +6,46 @@
 -Text Analyzer: Useful for content creators and writers to track word count, characters, and specific components like symbols and numbers.
 -Random Text Generator: Helpful for creating placeholder content, testing layouts, or generating mock data.
 
-## CASES
+## Case Conversions
+
+### Cases Conversions
 
     - [] Upper Case: THIS IS UPPER CASE
+        - isUppercase
     - [] Lower Case: this is lower case
+        - isLowercase
     - [] Sentence Case: This is sentence case
+        - [0] isUppercase
+        - Others isLowercase
     - [] Title Case: This Is Title Case
+        - After space is isUppercase 
+        - Others isLowercase
     - [] Snake Case: this_is_snake_case
+        - isLowercase
+        - hasUnderscore
     - [] Kebab Case: this-is-kebab-case
+        - isLowercase
+        - hasHyphen
     - [] Pascal Case: ThisIsPascalCase
+        - [0] isUppercase
+        - also has more isUpperCase
     - [] Camel Case: thisIsCamelCase
+        - [0] isLowercase
+        - also has more isUpperCase
     - [] Upper Snake Case: THIS_IS_UPPER_SNAKE_CASE
-    - [] Screaming Snake Case: THIS-IS-UPPER-SNAKE-CASE
+        - isLowercase
+        - hasUnderscore
+    - [] Screaming Snake Case: THIS-IS-SCREAMING-SNAKE-CASE
+        - isLowercase
+        - hasHyphen
+
+### Checks
+
+    - [X] Extract Current Case (check for [spaces, `-`, `_`] send boolean object for cases)
+    - [X] Check Current Case(if more than one case boolean received then error)
+    - [] Divide the words
+    - [] Check Expected Case(from list, if supported)
+    - [] Convert the Case
 
 ## Additional Functionality Ideas
 
