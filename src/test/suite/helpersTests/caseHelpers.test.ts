@@ -1,6 +1,10 @@
 import * as assert from "assert";
 import { describe, it } from "mocha";
-import { checkCase, divideStringIntoArray } from "../../../helpers/caseHelpers";
+import {
+  checkCase,
+  convertCase,
+  divideStringIntoArray,
+} from "../../../helpers/caseHelpers";
 import CasesEnum from "../../../types/cases";
 
 export default function conversionControllerTests() {
@@ -145,6 +149,85 @@ export default function conversionControllerTests() {
           CasesEnum.camelCase
         );
         assert.deepEqual(result, ["it", "Isnt", "A", "Simple", "Case"]);
+      });
+    });
+    describe("convertCase()", () => {
+      it(`["this", "Is", "Upper", "Case"] is 'THIS IS UPPER CASE'`, () => {
+        const result = convertCase(
+          ["this", "Is", "Upper", "Case"],
+          CasesEnum.upperCase
+        );
+        assert.deepEqual(result, "THIS IS UPPER CASE");
+      });
+      it(`["this", "Is", "Lower", "Case"] is 'this is lower case'`, () => {
+        const result = convertCase(
+          ["this", "Is", "Lower", "Case"],
+          CasesEnum.lowerCase
+        );
+        assert.deepEqual(result, "this is lower case");
+      });
+      it(`["THIS", "IS", "KEBAB", "CASE"] is 'this-is-kebab-case'`, () => {
+        const result = convertCase(
+          ["THIS", "IS", "KEBAB", "CASE"],
+          CasesEnum.kebabCase
+        );
+        assert.deepEqual(result, "this-is-kebab-case");
+      });
+      it(`["THIS", "IS", "SNAKE", "CASE"] is 'this_is_snake_case'`, () => {
+        const result = convertCase(
+          ["THIS", "IS", "SNAKE", "CASE"],
+          CasesEnum.snakeCase
+        );
+        assert.deepEqual(result, "this_is_snake_case");
+      });
+      it(`["this", "is", "screaming", "snake", "case"] is 'THIS-IS-SCREAMING-SNAKE-CASE'`, () => {
+        const result = convertCase(
+          ["this", "is", "screaming", "snake", "case"],
+          CasesEnum.screamingSnakeCase
+        );
+        assert.deepEqual(result, "THIS-IS-SCREAMING-SNAKE-CASE");
+      });
+      it(`["this", "is", "upper", "snake", "case"] is 'THIS_IS_UPPER_SNAKE_CASE'`, () => {
+        const result = convertCase(
+          ["this", "is", "upper", "snake", "case"],
+          CasesEnum.upperSnakeCase
+        );
+        assert.deepEqual(result, "THIS_IS_UPPER_SNAKE_CASE");
+      });
+      it(`["this", "is", "upper", "snake", "case"] is 'THIS_IS_UPPER_SNAKE_CASE'`, () => {
+        const result = convertCase(
+          ["this", "is", "upper", "snake", "case"],
+          CasesEnum.upperSnakeCase
+        );
+        assert.deepEqual(result, "THIS_IS_UPPER_SNAKE_CASE");
+      });
+      it(`["this", "is", "title", "case"] is 'This Is Title Case'`, () => {
+        const result = convertCase(
+          ["this", "is", "title", "case"],
+          CasesEnum.titleCase
+        );
+        assert.deepEqual(result, "This Is Title Case");
+      });
+      it(`["this", "is", "sentence", "case"] is 'This. Is. Sentence. Case.'`, () => {
+        const result = convertCase(
+          ["this", "is", "sentence", "case"],
+          CasesEnum.sentenceCase
+        );
+        assert.deepEqual(result, "This. Is. Sentence. Case.");
+      });
+      it(`["this", "is", "pascal", "case"] is 'ThisIsPascalCase'`, () => {
+        const result = convertCase(
+          ["this", "is", "pascal", "case"],
+          CasesEnum.pascalCase
+        );
+        assert.deepEqual(result, "ThisIsPascalCase");
+      });
+      it(`["this", "is", "camel", "case"] is 'thisIsCamelCase'`, () => {
+        const result = convertCase(
+          ["this", "is", "camel", "case"],
+          CasesEnum.camelCase
+        );
+        assert.deepEqual(result, "thisIsCamelCase");
       });
     });
   });

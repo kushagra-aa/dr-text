@@ -1,4 +1,5 @@
 import CasesEnum from "../types/cases";
+import { capitalizeFirstLetterOfArrayString } from "./stringHelpers";
 
 const checkIfAllFirstLetterUppercase = (arr: string[]) =>
   arr.every((str) => str.length > 0 && str[0] === str[0].toUpperCase());
@@ -73,9 +74,12 @@ export const checkCase = (currentVal: string): CasesEnum | "All" => {
   return "All";
 };
 
-export const divideStringIntoArray = (str: string, c: CasesEnum): string[] => {
+export const divideStringIntoArray = (
+  str: string,
+  currentCase: CasesEnum
+): string[] => {
   let strArray: string[] = [];
-  switch (c) {
+  switch (currentCase) {
     case CasesEnum.kebabCase:
     case CasesEnum.screamingSnakeCase:
       return str.split("-");
@@ -101,5 +105,39 @@ export const divideStringIntoArray = (str: string, c: CasesEnum): string[] => {
       );
     default:
       return str.split(" ");
+  }
+};
+
+export const convertCase = (
+  strArr: string[],
+  expectedCase: CasesEnum
+): string => {
+  switch (expectedCase) {
+    case CasesEnum.upperCase:
+      return strArr.map((s) => s.toUpperCase()).join(" ");
+    case CasesEnum.lowerCase:
+      return strArr.map((s) => s.toLowerCase()).join(" ");
+    case CasesEnum.kebabCase:
+      return strArr.map((s) => s.toLowerCase()).join("-");
+    case CasesEnum.screamingSnakeCase:
+      return strArr.map((s) => s.toUpperCase()).join("-");
+    case CasesEnum.snakeCase:
+      return strArr.map((s) => s.toLowerCase()).join("_");
+    case CasesEnum.upperSnakeCase:
+      return strArr.map((s) => s.toUpperCase()).join("_");
+    case CasesEnum.titleCase:
+      return capitalizeFirstLetterOfArrayString(strArr).join(" ");
+    case CasesEnum.sentenceCase:
+      return capitalizeFirstLetterOfArrayString(strArr).join(". ") + ".";
+    case CasesEnum.pascalCase:
+      return capitalizeFirstLetterOfArrayString(strArr).join("");
+
+    case CasesEnum.camelCase:
+      return [
+        strArr[0],
+        ...capitalizeFirstLetterOfArrayString(strArr.slice(1)),
+      ].join("");
+    default:
+      return strArr.map((s) => s.toUpperCase()).join(".");
   }
 };

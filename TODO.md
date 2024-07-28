@@ -39,13 +39,13 @@
         - isLowercase
         - hasHyphen
 
-### Checks
+### Utils
 
     - [X] Extract Current Case (check for [spaces, `-`, `_`] send boolean object for cases)
     - [X] Check Current Case(if more than one case boolean received then error)
     - [X] Check Expected Case(from list, if supported)
-    - [] Divide the words
-    - [] Convert the Case
+    - [X] Divide the words
+    - [X] Convert the Case
 
 ## Additional Functionality Ideas
 

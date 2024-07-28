@@ -1,7 +1,8 @@
 import { window } from "vscode";
 
-const showError = (text: string) => window.showErrorMessage(`${text}`);
-export const handleError = (text: string) =>
-  showError(`Dr.Text Exclaims: Conversion Filed! ${text}`);
+const showError = (text: string, err: unknown) =>
+  window.showErrorMessage(text + err);
+export const handleError = (err: unknown) =>
+  showError(`Dr.Text Exclaims: Conversion Filed!`, err);
 
 export default showError;

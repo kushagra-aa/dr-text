@@ -1,12 +1,12 @@
 import getInput from "./lib/getInput";
 import { CASE_OPTIONS } from "./constants";
 import getQuickPick from "./lib/getQuickPick";
-import showError from "./lib/showError";
+import showError, { handleError } from "./lib/showError";
 import copyToClipboard from "./lib/copyToClipboard";
 import getSelection from "./lib/getSelections";
 import replaceInEditor from "./lib/replaceInEditor";
 import { window } from "vscode";
-import conversionController from "./helpers/conversionHelpers";
+import conversionController from "./helpers/conversionHelper";
 import { validateOptions } from "./helpers/validators";
 
 // Expected expression : `THIS IS UPPER CASE`
@@ -59,7 +59,7 @@ const caseConverterController = async () => {
       await copyToClipboard(`${result}`);
     }
   } catch (e) {
-    showError("Oops! Something Went Sideways");
+    handleError(e as string);
   }
 };
 
