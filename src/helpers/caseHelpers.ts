@@ -72,3 +72,34 @@ export const checkCase = (currentVal: string): CasesEnum | "All" => {
   }
   return "All";
 };
+
+export const divideStringIntoArray = (str: string, c: CasesEnum): string[] => {
+  let strArray: string[] = [];
+  switch (c) {
+    case CasesEnum.kebabCase:
+    case CasesEnum.screamingSnakeCase:
+      return str.split("-");
+    case CasesEnum.snakeCase:
+    case CasesEnum.upperSnakeCase:
+      return str.split("_");
+    case CasesEnum.pascalCase:
+    case CasesEnum.camelCase:
+      let tempArr: string[] = [];
+      str.split("").forEach((s, i) => {
+        if (i > 1 && s.toUpperCase() === s) {
+          strArray.push(tempArr.join(""));
+          tempArr = [];
+        }
+        tempArr.push(s);
+      });
+      strArray.push(tempArr.join(""));
+      return strArray;
+    case CasesEnum.sentenceCase:
+      strArray = str.split(". ");
+      return strArray.map((s, i) =>
+        i === strArray.length - 1 ? s + "" : s + ". "
+      );
+    default:
+      return str.split(" ");
+  }
+};

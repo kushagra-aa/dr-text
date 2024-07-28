@@ -1,5 +1,5 @@
 import getInput from "./lib/getInput";
-import { CASES_OPTIONS } from "./constants";
+import { CASE_OPTIONS } from "./constants";
 import getQuickPick from "./lib/getQuickPick";
 import showError from "./lib/showError";
 import copyToClipboard from "./lib/copyToClipboard";
@@ -9,7 +9,7 @@ import { window } from "vscode";
 import conversionController from "./helpers/conversionHelpers";
 import { validateOptions } from "./helpers/validators";
 
-// Expected expression : 16px
+// Expected expression : `THIS IS UPPER CASE`
 const caseConverterController = async () => {
   try {
     const editor = window.activeTextEditor;
@@ -20,44 +20,42 @@ const caseConverterController = async () => {
     const selections = getSelection(editor);
     if (selections.length > 0) {
       let expectedCaseInput = await getQuickPick(
-        CASES_OPTIONS,
-        "Select the expected Case Eg:'rem'"
+        CASE_OPTIONS,
+        `Select the expected Case Eg:'${CASE_OPTIONS[0]}'`
       );
       editor.edit((e) => {
         selections.forEach(async (selection) => {
-          const { expectedCase, currentCase, currentValue } = validateOptions(
-            selection.text,
-            expectedCaseInput
-          );
-          if (!expectedCase || !currentCase || !currentValue) {
-            return;
-          }
-          const result =
-            conversionController();
-            // currentValue,
-            // currentCase,
-            // expectedCase
+          // const { expectedCase, currentCase, currentValue } = validateOptions(
+          //   selection.text,
+          //   expectedCaseInput
+          // );
+          // if (!expectedCase || !currentCase || !currentValue) {
+          //   return;
+          // }
+          const result = conversionController();
+          // currentValue,
+          // currentCase,
+          // expectedCase
           await replaceInEditor(e, selection.selection, result);
         });
       });
     } else {
       let expression = (await getInput("Enter string")) || "";
       let expectedCaseInput = await getQuickPick(
-        CASES_OPTIONS,
-        "Select the expected case Eg:'UpperCase'"
+        CASE_OPTIONS,
+        `Select the expected Case Eg:'${CASE_OPTIONS[0]}'`
       );
-      const { expectedCase, currentCase, currentValue } = validateOptions(
-        expression,
-        expectedCaseInput
-      );
-      if (!expectedCase || !currentCase || !currentValue) {
-        return;
-      }
-      const result =
-        conversionController();
-        // currentValue,
-        // currentCase,
-        // expectedCase
+      // const { expectedCase, currentCase, currentValue } = validateOptions(
+      //   expression,
+      //   expectedCaseInput
+      // );
+      // if (!expectedCase || !currentCase || !currentValue) {
+      //   return;
+      // }
+      const result = conversionController();
+      // currentValue,
+      // currentCase,
+      // expectedCase
       await copyToClipboard(`${result}`);
     }
   } catch (e) {

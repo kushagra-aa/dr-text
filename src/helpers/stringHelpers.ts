@@ -1,4 +1,4 @@
-import { CASES_OPTIONS } from "../constants";
+import { CASE_OPTIONS } from "../constants";
 
 export const extractValue = (val: string): number =>
   parseFloat((val.match(/\d+(\.\d+)?/g) || ["0"])[0].toString());
@@ -21,7 +21,7 @@ export const splitString = (text: string): string[] => {
 };
 // To check if the given string is a valid unit and returns UnitEnum Type.
 export const checkUnit = (text: string) =>
-  CASES_OPTIONS.find((u) => u.toLowerCase() === text.trim().toLowerCase());
+  CASE_OPTIONS.find((u) => u.toLowerCase() === text.trim().toLowerCase());
 
 // To check if the given string is a valid value(`16px`) and returns string.
 export const checkValue = (text: string) =>
