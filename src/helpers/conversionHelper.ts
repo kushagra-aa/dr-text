@@ -1,11 +1,14 @@
 import CasesEnum from "../types/cases";
-import { convertCase, divideStringIntoArray } from "./caseHelpers";
+import { checkCase, convertCase, divideStringIntoArray } from "./caseHelpers";
 
 const conversionHelper = (
-  currentValue: string,
-  currentCase: CasesEnum,
+  inputString: string,
   expectedCase: CasesEnum
-): string =>
-  convertCase(divideStringIntoArray(currentValue, currentCase), expectedCase);
+): string => {
+  const currentCase = checkCase(inputString);
+  const stringArray = divideStringIntoArray(inputString, currentCase);
+  const result = convertCase(stringArray, expectedCase);
+  return result;
+};
 
 export default conversionHelper;

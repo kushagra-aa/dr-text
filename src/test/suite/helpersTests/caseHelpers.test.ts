@@ -7,7 +7,7 @@ import {
 } from "../../../helpers/caseHelpers";
 import CasesEnum from "../../../types/cases";
 
-export default function conversionControllerTests() {
+export default function caseHelpersTests() {
   describe("Check 'caseHelper' functions", () => {
     describe("checkCase()", () => {
       it(`'THIS IS UPPER CASE' is 'Upper Case'`, () => {
@@ -186,13 +186,6 @@ export default function conversionControllerTests() {
           CasesEnum.screamingSnakeCase
         );
         assert.deepEqual(result, "THIS-IS-SCREAMING-SNAKE-CASE");
-      });
-      it(`["this", "is", "upper", "snake", "case"] is 'THIS_IS_UPPER_SNAKE_CASE'`, () => {
-        const result = convertCase(
-          ["this", "is", "upper", "snake", "case"],
-          CasesEnum.upperSnakeCase
-        );
-        assert.deepEqual(result, "THIS_IS_UPPER_SNAKE_CASE");
       });
       it(`["this", "is", "upper", "snake", "case"] is 'THIS_IS_UPPER_SNAKE_CASE'`, () => {
         const result = convertCase(

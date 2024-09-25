@@ -1,12 +1,14 @@
 import CasesEnum from "../types/cases";
 import { capitalizeFirstLetterOfArrayString } from "./stringHelpers";
 
+type CasesOptionsEnum = CasesEnum | "All";
+
 const checkIfAllFirstLetterUppercase = (arr: string[]) =>
   arr.every((str) => str.length > 0 && str[0] === str[0].toUpperCase());
 const checkIfSomeLettersUppercase = (arr: string[]) =>
   arr.some((str) => str.length > 0 && str === str.toUpperCase());
 
-export const checkCase = (currentVal: string): CasesEnum | "All" => {
+export const checkCase = (currentVal: string): CasesOptionsEnum => {
   const fixedVal = currentVal.trim();
   const firstCheckResult = {
     isUpperCase: fixedVal === fixedVal.toUpperCase(),
@@ -76,7 +78,7 @@ export const checkCase = (currentVal: string): CasesEnum | "All" => {
 
 export const divideStringIntoArray = (
   str: string,
-  currentCase: CasesEnum
+  currentCase: CasesOptionsEnum
 ): string[] => {
   let strArray: string[] = [];
   switch (currentCase) {

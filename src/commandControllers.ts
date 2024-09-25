@@ -8,6 +8,7 @@ import replaceInEditor from "./lib/replaceInEditor";
 import { window } from "vscode";
 import conversionController from "./helpers/conversionHelper";
 import { validateOptions } from "./helpers/validators";
+import CasesEnum from "./types/cases";
 
 // Expected expression : `THIS IS UPPER CASE`
 const caseConverterController = async () => {
@@ -32,7 +33,7 @@ const caseConverterController = async () => {
           // if (!expectedCase || !currentCase || !currentValue) {
           //   return;
           // }
-          const result = conversionController();
+          const result = conversionController("", CasesEnum.camelCase);
           // currentValue,
           // currentCase,
           // expectedCase
@@ -52,7 +53,7 @@ const caseConverterController = async () => {
       // if (!expectedCase || !currentCase || !currentValue) {
       //   return;
       // }
-      const result = conversionController();
+      const result = conversionController("", CasesEnum.camelCase);
       // currentValue,
       // currentCase,
       // expectedCase
