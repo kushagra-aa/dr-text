@@ -10,32 +10,32 @@
 
 ### Cases Conversions
 
-    - [] Upper Case: THIS IS UPPER CASE
+    - [X] Upper Case: THIS IS UPPER CASE
         - isUppercase
-    - [] Lower Case: this is lower case
+    - [X] Lower Case: this is lower case
         - isLowercase
-    - [] Sentence Case: This is sentence case
+    - [X] Sentence Case: This is sentence case
         - [0] isUppercase
         - Others isLowercase
-    - [] Title Case: This Is Title Case
+    - [X] Title Case: This Is Title Case
         - After space is isUppercase 
         - Others isLowercase
-    - [] Snake Case: this_is_snake_case
+    - [X] Snake Case: this_is_snake_case
         - isLowercase
         - hasUnderscore
-    - [] Kebab Case: this-is-kebab-case
+    - [X] Kebab Case: this-is-kebab-case
         - isLowercase
         - hasHyphen
-    - [] Pascal Case: ThisIsPascalCase
+    - [X] Pascal Case: ThisIsPascalCase
         - [0] isUppercase
         - also has more isUpperCase
-    - [] Camel Case: thisIsCamelCase
+    - [X] Camel Case: thisIsCamelCase
         - [0] isLowercase
         - also has more isUpperCase
-    - [] Upper Snake Case: THIS_IS_UPPER_SNAKE_CASE
+    - [X] Upper Snake Case: THIS_IS_UPPER_SNAKE_CASE
         - isLowercase
         - hasUnderscore
-    - [] Screaming Snake Case: THIS-IS-SCREAMING-SNAKE-CASE
+    - [X] Screaming Snake Case: THIS-IS-SCREAMING-SNAKE-CASE
         - isLowercase
         - hasHyphen
 
@@ -48,6 +48,9 @@
     - [X] Convert the Case
 
 ## Additional Functionality Ideas
+
+-Numbering Lines:
+    -Number selection index
 
 -Text Cleaning and Formatting:
     -Remove extra spaces

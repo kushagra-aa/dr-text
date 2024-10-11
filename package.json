@@ -39,7 +39,7 @@
     "commands": [
       {
         "command": "dr-text.caseConvert",
-        "title": "Hello World"
+        "title": "Convert Text Case"
       }
     ]
   },

@@ -1,3 +1,4 @@
+import showInfo from "../lib/showInfo";
 import CasesEnum from "../types/cases";
 import { capitalizeFirstLetterOfArrayString } from "./stringHelpers";
 
@@ -38,13 +39,13 @@ export const checkCase = (currentVal: string): CasesOptionsEnum => {
   if (firstCheckResult.hasUnderscore && firstCheckResult.isUpperCase) {
     return CasesEnum.upperSnakeCase;
   }
+  if (firstCheckResult.isUpperCase) {
+    return CasesEnum.upperCase;
+  }
+  if (firstCheckResult.isLowerCase) {
+    return CasesEnum.lowerCase;
+  }
   if (firstCheckResult.hasSpace) {
-    if (firstCheckResult.isUpperCase) {
-      return CasesEnum.upperCase;
-    }
-    if (firstCheckResult.isLowerCase) {
-      return CasesEnum.lowerCase;
-    }
     const sentenceArray = fixedVal.split(".").map((s) => s.trim());
     const wordArray = fixedVal.split(" ");
     if (checkIfAllFirstLetterUppercase(wordArray)) {
@@ -62,6 +63,9 @@ export const checkCase = (currentVal: string): CasesOptionsEnum => {
       // Check for Pascal and Camel Case
       // Pascal === First letter is uppercase && has other uppercase after
       // Camel === First letter is lower && has other uppercase after
+      showInfo(`=${currentVal}`);
+      showInfo(`==${fixedVal}`);
+      showInfo(`===${valArray.toString()}`);
       if (valArray[0].toUpperCase() === valArray[0]) {
         if (checkIfSomeLettersUppercase(valArray)) {
           return CasesEnum.pascalCase;

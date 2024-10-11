@@ -5,6 +5,6 @@ import conversionHelpersTests from "./helpersTests/conversionHelper.test";
 suite("Extension Test Suite", () => {
   vscode.window.showInformationMessage("Start all tests.");
 
-  // caseHelpersTests();
+  caseHelpersTests();
   conversionHelpersTests();
 });
