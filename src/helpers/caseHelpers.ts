@@ -1,4 +1,3 @@
-import showInfo from "../lib/showInfo";
 import CasesEnum from "../types/cases";
 import { capitalizeFirstLetterOfArrayString } from "./stringHelpers";
 
@@ -63,9 +62,6 @@ export const checkCase = (currentVal: string): CasesOptionsEnum => {
       // Check for Pascal and Camel Case
       // Pascal === First letter is uppercase && has other uppercase after
       // Camel === First letter is lower && has other uppercase after
-      showInfo(`=${currentVal}`);
-      showInfo(`==${fixedVal}`);
-      showInfo(`===${valArray.toString()}`);
       if (valArray[0].toUpperCase() === valArray[0]) {
         if (checkIfSomeLettersUppercase(valArray)) {
           return CasesEnum.pascalCase;
@@ -118,6 +114,7 @@ export const convertCase = (
   strArr: string[],
   expectedCase: CasesEnum
 ): string => {
+  const strArrLower = strArr.map((s) => s.toLowerCase());
   switch (expectedCase) {
     case CasesEnum.upperCase:
       return strArr.map((s) => s.toUpperCase()).join(" ");
@@ -132,16 +129,16 @@ export const convertCase = (
     case CasesEnum.upperSnakeCase:
       return strArr.map((s) => s.toUpperCase()).join("_");
     case CasesEnum.titleCase:
-      return capitalizeFirstLetterOfArrayString(strArr).join(" ");
+      return capitalizeFirstLetterOfArrayString(strArrLower).join(" ");
     case CasesEnum.sentenceCase:
-      return capitalizeFirstLetterOfArrayString(strArr).join(". ") + ".";
+      return capitalizeFirstLetterOfArrayString(strArrLower).join(". ") + ".";
     case CasesEnum.pascalCase:
-      return capitalizeFirstLetterOfArrayString(strArr).join("");
+      return capitalizeFirstLetterOfArrayString(strArrLower).join("");
 
     case CasesEnum.camelCase:
       return [
-        strArr[0],
-        ...capitalizeFirstLetterOfArrayString(strArr.slice(1)),
+        strArrLower[0],
+        ...capitalizeFirstLetterOfArrayString(strArrLower.slice(1)),
       ].join("");
     default:
       return strArr.map((s) => s.toUpperCase()).join(".");

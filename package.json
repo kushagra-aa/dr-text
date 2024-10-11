@@ -39,7 +39,11 @@
     "commands": [
       {
         "command": "dr-text.caseConvert",
-        "title": "Convert Text Case"
+        "title": "Text: Case Change"
+      },
+      {
+        "command": "dr-text.logCursorNumbers",
+        "title": "Text: Log Cursor Index"
       }
     ]
   },

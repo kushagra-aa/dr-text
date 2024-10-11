@@ -79,4 +79,29 @@ const caseConverterController = async () => {
   }
 };
 
-export { caseConverterController };
+const cursorIndexController = async () => {
+  try {
+    const editor = window.activeTextEditor;
+    if (!editor || editor === null) {
+      throw new Error("No Editor Found!");
+    }
+    const selections = getSelection(editor);
+    if (selections.length > 0) {
+      editor.edit((e) => {
+        selections.forEach(async (selection, i) => {
+          await replaceInEditor(
+            e,
+            selection.selection,
+            (selections.length - i).toString()
+          );
+        });
+      });
+    } else {
+      throw new Error("No Cursors Found!");
+    }
+  } catch (e) {
+    handleError(e as string);
+  }
+};
+
+export { caseConverterController, cursorIndexController };

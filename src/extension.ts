@@ -1,14 +1,21 @@
 import * as vscode from "vscode";
-import { caseConverterController } from "./commandControllers";
+import {
+  caseConverterController,
+  cursorIndexController,
+} from "./commandControllers";
 
 // This method is called when your extension is activated
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand(
+  let convertDisposable = vscode.commands.registerCommand(
     "dr-text.caseConvert",
     caseConverterController
   );
+  let cursorIndexDisposable = vscode.commands.registerCommand(
+    "dr-text.logCursorNumbers",
+    cursorIndexController
+  );
 
-  context.subscriptions.push(disposable);
+  context.subscriptions.push(convertDisposable, cursorIndexDisposable);
 }
 
 export function deactivate() {}
