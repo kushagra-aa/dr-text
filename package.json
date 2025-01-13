@@ -38,10 +38,12 @@
   "contributes": {
     "commands": [
       {
+        "category": "DrText",
         "command": "dr-text.caseConvert",
         "title": "Text: Case Change"
       },
       {
+        "category": "DrText",
         "command": "dr-text.logCursorNumbers",
         "title": "Text: Log Cursor Index"
       }
