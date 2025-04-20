@@ -10,8 +10,6 @@ import conversionController from "./helpers/conversionHelper";
 import { validateOptions } from "./helpers/validators";
 import CasesEnum from "./types/cases";
 
-// TODO: !editor or !selection
-
 const handleExpectedCase = async (): Promise<CasesEnum | "All"> => {
   let expectedCaseInput = await getQuickPick(
     CASE_OPTIONS,
@@ -79,7 +77,7 @@ const caseConverterController = async () => {
   }
 };
 
-const cursorIndexController = async () => {
+const cursorIndexController = async (isReversed: boolean = false) => {
   try {
     const editor = window.activeTextEditor;
     if (!editor || editor === null) {
@@ -89,11 +87,10 @@ const cursorIndexController = async () => {
     if (selections.length > 0) {
       editor.edit((e) => {
         selections.forEach(async (selection, i) => {
-          await replaceInEditor(
-            e,
-            selection.selection,
-            (selections.length - i).toString()
-          );
+          const output = !isReversed
+            ? (selections.length - i).toString()
+            : (i + 1).toString();
+          await replaceInEditor(e, selection.selection, output);
         });
       });
     } else {

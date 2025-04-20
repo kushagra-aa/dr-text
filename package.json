@@ -44,6 +44,11 @@
       {
         "command": "dr-text.logCursorNumbers",
         "title": "Text: Log Cursor Index"
+      },
+      {
+        "category": "DrText",
+        "command": "dr-text.logReverseCursorNumbers",
+        "title": "Text: Log Reverse Cursor Index"
       }
     ]
   },
