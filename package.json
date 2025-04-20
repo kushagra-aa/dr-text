@@ -1,7 +1,7 @@
 {
   "name": "dr-text",
   "displayName": "dr-text",
-  "description": "Effortlessly Clean, Analyze, and Transform Your Text.",
+  "description": "A helper with text-related utils | Effortlessly Clean, Analyze, and Transform Your Text.",
   "publisher": "kushagra-aa",
   "license": "ISC",
   "homepage": "https://github.com/kushagra-aa/dr-text/blob/master/README.md",
@@ -31,9 +31,10 @@
     "uppercase to lowercase",
     "pascal case",
     "camel case",
-    "text case converter"
+    "text case converter",
+    "text editor",
+    "text helper"
   ],
-  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
@@ -66,19 +67,19 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.88.0",
     "@types/mocha": "^10.0.2",
     "@types/node": "18.x",
+    "@types/vscode": "^1.88.0",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
+    "@vscode/test-electron": "^2.3.4",
     "eslint": "^8.50.0",
     "glob": "^10.3.3",
     "mocha": "^10.2.0",
-    "typescript": "^5.2.2",
     "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4",
-    "@vscode/test-electron": "^2.3.4"
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "clipboardy": "^4.0.0"

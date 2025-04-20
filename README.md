@@ -1,71 +1,129 @@
-# dr-text README
+# Dr. Text - Your Enhanced Text Editing Sidekick in VS Code
 
-This is the README for your extension "dr-text". After writing up a brief description, we recommend including the following sections.
+**From the creator of ['Wrap It'][wrapit] and an absolute hidden gem ['REMifyy'][remifyy]!**
+
+Tired of repetitive text manipulations and wishing for more power at your fingertips within VS Code? **Dr. Text** is here to boost your productivity by providing a collection of handy text editing features, with a strong emphasis on leveraging VS Code's fantastic multi-cursor capabilities.
+
+This extension aims to augment the built-in text editing prowess of VS Code, tackling those little frustrations and saving you precious time. As a fellow enthusiast of multi-cursor, I felt the need for more focused tools to streamline common tasks. More features are on the way!
+
+[Download for Visual Studio Code][drtext]
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### ⚙️ Case Conversion (`dr-text.caseConvert`)
 
-For example if there is an image subfolder under your extension project workspace:
+Effortlessly transform the case of your selected text. Whether you're refactoring variable names or standardizing your writing, Dr. Text has you covered. Supports multiple cursors for simultaneous case changes across selections!
 
-\!\[feature X\]\(images/feature-x.png\)
+**Supported Cases:**
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+* `upperCase` (HELLO WORLD)
+* `lowerCase` (hello world)
+* `sentenceCase` (This is a sentence.)
+* `titleCase` (This Is a Title Case Example)
+* `snakeCase` (this_is_snake_case)
+* `kebabCase` (this-is-kebab-case)
+* `pascalCase` (ThisIsPascalCase)
+* `camelCase` (thisIsCamelCase)
+* `upperSnakeCase` (THIS_IS_UPPER_SNAKE_CASE)
+* `screamingSnakeCase` (THIS-IS-SCREAMING-SNAKE-CASE)
 
-## Requirements
+**Use Cases:**
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+* Quickly standardize variable naming conventions (e.g., converting from `camelCase` to `pascalCase` across multiple variable declarations).
+* Formatting titles and headings.
+* Preparing text for different coding styles or output formats.
 
-## Extension Settings
+### 🔢 Log Cursor Numbers (`dr-text.logCursorNumbers`)
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Streamline your debugging workflow! This command pastes sequential index numbers (1, 2, 3, ...) at each of your active cursors.
 
-For example:
+**Use Cases:**
 
-This extension contributes the following settings:
+* Easily identify the output of multiple `console.log()` statements when debugging loops or asynchronous operations.
+* Quickly number list items or similar sequences across multiple lines.
+* Best used with multiple cursors for maximum efficiency.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+**Example:**
 
-## Known Issues
+Select multiple instances of `console.log("Log: |")` and run this command to get:
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+```javascript
+console.log("Log: 1")
+console.log("Log: 2")
+console.log("Log: 3")
+// ... and so on
+```
 
-## Release Notes
+### ⏪ Log Reverse Cursor Numbers (`dr-text.logReverseCursorNumbers`)
 
-Users appreciate release notes as you update your extension.
+Similar to "Log Cursor Numbers," but pastes numbers in reverse order (e.g., if you have 5 cursors, it will paste 5, 4, 3, 2, 1).
 
-### 1.0.0
+**Use Cases:**
 
-Initial release of ...
+* Useful in scenarios where you need to identify the order of execution or elements in reverse.
+* Works seamlessly with multiple cursors.
 
-### 1.0.1
+### 🧹 Text Cleaning and Formatting (Coming Soon!)
 
-Fixed issue #.
+Stay tuned for features that will help you clean and format your text with ease:
 
-### 1.1.0
+* Removing extra spaces.
+* Trimming leading and trailing whitespace.
+* Sorting lines alphabetically or numerically.
+* Converting between tabs and spaces.
+* Removing duplicate lines.
 
-Added features X, Y, and Z.
+### 📊 Text Statistics (Coming Soon!)
 
----
+Gain insights into your text with upcoming statistical analysis tools, such as:
 
-## Following extension guidelines
+* Character frequency analysis.
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+### ✨ And Many More
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+The journey of Dr. Text is just beginning! I'm constantly exploring new ways to enhance your text editing experience in VS Code.
 
-## Working with Markdown
+## How to Use It
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+1. **Select Text (for Case Conversion):** Highlight the text you want to modify. For "Log Cursor Numbers," place your cursors where you want the numbers to appear.
+2. **Open Command Palette:** Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (Windows/Linux) or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (Mac).
+3. **Type the Command:**
+    * For Case Conversion, type "Dr. Text: Convert Case" and select the desired case from the list.
+    * For Logging Cursor Numbers, type "Dr. Text: Log Cursor Numbers" and press Enter.
+    * For Logging Reverse Cursor Numbers, type "Dr. Text: Log Reverse Cursor Numbers" and press Enter.
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+## Commands
 
-## For more information
+* `Text: Case Change` (`dr-text.caseConvert`): Opens a quick pick menu to select the desired case conversion for the selected text.
+* `Text: Log Cursor Index` (`dr-text.logCursorNumbers`): Pastes sequential numbers (1, 2, 3...) at each active cursor position.
+* `Text: Log Reverse Cursor Index` (`dr-text.logReverseCursorNumbers`): Pastes sequential numbers in reverse order (..., 3, 2, 1) at each active cursor position.
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+## Contributing
 
-**Enjoy!**
+Your ideas and contributions are highly valued!
+
+* **Report Bugs:** If you encounter any issues, please create a detailed issue on the [GitHub Repository][drtextgh].
+* **Suggest Features:** Have a brilliant idea for a new text editing enhancement? Let's hear it! Create an issue with your suggestion.
+* **Pull Requests:** I welcome pull requests for bug fixes and new features. Please read the [Contribution Guide](./contribution.md) for guidelines.
+
+## Repository & Feedback
+
+Please report issues, suggest features, and contribute to the development of Dr. Text on the repository page.
+
+[GitHub Repository][drtextgh]
+
+## Let's Connect & Collaborate
+
+I'm excited to build Dr. Text into a powerful companion for VS Code users. Tell me what features *you* would love to see in this extension! Maybe we can work together to make VS Code even more powerful and efficient for everyone.
+
+You can connect with me here:
+
+Kushagra Agnihotri
+
+Please Visit [Here][portfolio] for additional information
+
+[wrapit]: https://marketplace.visualstudio.com/items?itemName=kushagra-aa.wrap-it
+[remifyy]: https://marketplace.visualstudio.com/items?itemName=kushagra-aa.remifyy
+[drtext]: https://marketplace.visualstudio.com/items?itemName=kushagra-aa.dr-text
+[drtextgh]: https://github.com/kushagra-aa/dr-text
+[portfolio]: https://kushagra-aa.vercel.app/
