@@ -14,8 +14,16 @@ export function activate(context: vscode.ExtensionContext) {
     "dr-text.logCursorNumbers",
     cursorIndexController
   );
+  let reverseCursorIndexDisposable = vscode.commands.registerCommand(
+    "dr-text.logReverseCursorNumbers",
+    () => cursorIndexController(true)
+  );
 
-  context.subscriptions.push(convertDisposable, cursorIndexDisposable);
+  context.subscriptions.push(
+    convertDisposable,
+    cursorIndexDisposable,
+    reverseCursorIndexDisposable
+  );
 }
 
 export function deactivate() {}
